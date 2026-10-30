@@ -8,4 +8,9 @@ class Person {
     unsigned int group;
 public:
     Person(std::string f, std::string s, unsigned int g) : first_name(std::move(f)), second_name(std::move(s)), group(g){};
+
+    unsigned int get_group() const {
+        return group;
+    }
+
 };

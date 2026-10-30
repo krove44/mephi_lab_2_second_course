@@ -77,8 +77,11 @@ class avl_tree {
         else if (key > slot->key) {
             rec_add(key, val, slot->right);
         }
-        else {
+        else if (key < slot->key) {
             rec_add(key, val, slot->left);
+        }
+        else {
+            slot->value = val;
         }
         balance(slot);
     }
@@ -143,7 +146,7 @@ public:
         rec_add(key, val, head);
     }
 
-    bool find(T key) {
+    bool find(T key) const {
         Node<T, V>* start = head.get();
         while (start) {
             if (key == start->key) {
@@ -157,6 +160,22 @@ public:
             }
         }
         return false;
+    }
+
+    V& get(T key) const {
+        Node<T, V>* start = head.get();
+        while (start) {
+            if (key == start->key) {
+                return start->value;
+            }
+            if (key > start->key) {
+                start = start->right.get();
+            }
+            else {
+                start = start->left.get();
+            }
+        }
+        throw std::runtime_error("Нет такого ключа");
     }
 
     void remove(T key) {
