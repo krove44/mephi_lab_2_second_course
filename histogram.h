@@ -1,10 +1,11 @@
 #pragma once
 #include <set>
 #include <vector>
-#include ""
+#include "binary_tree/avl_tree.h"
 
 template<typename T>
 class histogram {
-    std::vector<>
+    std::vector<avl_tree<T>> sp;
+    
 
 };
