@@ -11,7 +11,7 @@ add_executable(mephi_lab_2_second_course
         main.cpp
         person.h
         histogram.h
-        binary_tree/avl_tree.h
+        mephi_lab_1_second_course/avl_tree.h
 )
 
 include(FetchContent)
@@ -29,7 +29,7 @@ add_executable(ui
         ui.cpp
         person.h
         histogram.h
-        binary_tree/avl_tree.h
+        mephi_lab_1_second_course/avl_tree.h
 )
 target_link_libraries(ui PRIVATE Qt6::Widgets Qt6::DataVisualization)
 
