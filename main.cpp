@@ -3,7 +3,7 @@
 #include <cassert>
 #include "person.h"
 #include "histogram.h"
-#include "binary_tree/avl_tree.h"
+#include "mephi_lab_1_second_course/avl_tree.h"
 
 using namespace std;
 
