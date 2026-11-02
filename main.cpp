@@ -3,6 +3,7 @@
 #include <cassert>
 #include "person.h"
 #include "histogram.h"
+#include "binary_tree/avl_tree.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ int main() {
         Person("Алексей", "Петров", 513)
     };
 
-    histogram<unsigned int, GroupStats> hist;
+    histogram<unsigned int, GroupStats, avl_tree<unsigned int, GroupStats>> hist;
 
     auto extract_key = [](const Person& p) {
         return p.get_group();

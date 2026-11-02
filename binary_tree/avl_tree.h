@@ -117,7 +117,7 @@ class avl_tree {
     }
 
     template <typename F>
-    void in_order(Node<T, V>* n, F&& f) {
+    void in_order(Node<T, V>* n, F&& f) const {
         if (!n) {
             return;
         }
@@ -183,7 +183,7 @@ public:
     }
 
     template <typename F>
-    void for_each(F f) {
+    void for_each(F f) const {
         in_order(head.get(), f);
     }
 

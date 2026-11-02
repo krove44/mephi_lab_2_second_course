@@ -12,5 +12,11 @@ public:
     unsigned int get_group() const {
         return group;
     }
+    std::string get_first_name() const {
+        return first_name;
+    }
+    std::string get_second_name() const {
+        return second_name;
+    }
 
 };

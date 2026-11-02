@@ -21,7 +21,9 @@ target_compile_features(avl_tests PRIVATE cxx_std_20)
 FetchContent_Declare(ftxui
         GIT_REPOSITORY https://github.com/ArthurSonzogni/FTXUI
         GIT_TAG main
+        GIT_SHALLOW ON
 )
+
 FetchContent_MakeAvailable(ftxui)
 add_executable(ui
         ui.cpp
