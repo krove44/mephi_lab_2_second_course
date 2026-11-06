@@ -24,18 +24,18 @@ int main() {
 
     histogram<unsigned int, GroupStats, avl_tree<unsigned int, GroupStats>> hist;
 
-    auto extract_key = [](const Person& p) {
+    std::function<unsigned int(const Person&)> extract_key = [](const Person& p) {
         return p.get_group();
     };
 
-    auto update_stat = [](GroupStats& stats, const Person& p) {
+    std::function<void(GroupStats&, const Person&)> update_stat = [](GroupStats& stats, const Person& p) {
         stats.count++;
         stats.score_group = (stats.score_group*(stats.count-1) + p.get_score())/stats.count;
     };
 
     GroupStats initial_stat{0, 0};
 
-    hist.build<Person>(students, extract_key, update_stat, initial_stat);
+    hist.build(students, extract_key, update_stat, initial_stat);
 
     const auto& tree = hist.get_tree();
 
