@@ -42,6 +42,14 @@ public:
     void build(std::initializer_list<Data> ilist, std::function<T(const Data&)> get_key, std::function<void(V&, const Data&)> update_func, const V& init_val) {
         build(ilist.begin(), ilist.end(), get_key, update_func, init_val);
     }
+    
+    template<typename Data>
+    void remove(const Data& item, std::function<T(const Data&)> get_key, std::function<void(V&, const Data&)> remove_func) {
+        T key = get_key(item);
+        if (dict_.find(key)) {
+            remove_func(dict_.get(key), item);
+        }
+    }
 
     Dict&  get_tree() {
         return dict_;
