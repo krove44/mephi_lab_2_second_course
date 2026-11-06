@@ -1,6 +1,14 @@
 #pragma once
 #include <concepts>
 #include <functional>
+#include <iterator>
+
+template <typename C>
+concept IterableContainer = requires(C c) {
+    { std::begin(c) };
+    { std::end(c) };
+    typename C::value_type;
+};
 
 template<typename T, typename V, typename D>
 concept IDictionary = requires (D dict, T key, V val) {
@@ -25,7 +33,7 @@ public:
         }
     }
 
-    template<typename Container>
+    template<IterableContainer Container>
     void build(const Container& container, std::function<T(const typename Container::value_type&)> get_key, std::function<void(V&, const typename Container::value_type&)> update_func, const V& init_val) {
         build(std::begin(container), std::end(container), get_key, update_func, init_val);
     }
