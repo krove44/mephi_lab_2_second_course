@@ -8,6 +8,8 @@ class Person {
     unsigned int group;
     double score;
 public:
+    Person() : first_name(""), second_name(""), group(0), score(0.0) {}
+
     Person(std::string f, std::string s, unsigned int g, double sc) : first_name(std::move(f)), second_name(std::move(s)), group(g), score(sc){};
 
     unsigned int get_group() const {
